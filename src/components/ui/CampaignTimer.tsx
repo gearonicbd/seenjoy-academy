@@ -6,7 +6,7 @@ import { useCampaign } from "@/hooks/useCampaign";
 import { CAMPAIGN_PRICE } from "@/lib/campaign";
 import { COURSE_INFO } from "@/lib/constants";
 
-const DEADLINE_TEXT = "২ মে ২০২৬, রাত ১১:৫৯";
+const DEADLINE_TEXT = "৩ মে ২০২৬, রাত ১১:৫৯";
 const CAMPAIGN_LABEL = "Early Bird Discount";
 
 interface Props {

@@ -211,7 +211,7 @@ export default function CheckoutForm({
       />
 
       {/* Coupon code */}
-      {/* <div>
+      <div>
         <p className="text-text-secondary text-sm font-medium mb-2 flex items-center gap-1.5">
           <Tag className="w-3.5 h-3.5" />
           কুপন কোড (ঐচ্ছিক)
@@ -296,7 +296,7 @@ export default function CheckoutForm({
         {couponError && (
           <p className="text-error text-xs mt-1.5">{couponError}</p>
         )}
-      </div> */}
+      </div>
 
       {/* Terms checkbox */}
       <div>

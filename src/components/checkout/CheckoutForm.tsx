@@ -214,7 +214,7 @@ export default function CheckoutForm({
       <div>
         <p className="text-text-secondary text-sm font-medium mb-2 flex items-center gap-1.5">
           <Tag className="w-3.5 h-3.5" />
-          কুপন কোড (ঐচ্ছিক)
+          কুপন কোড (অপশনাল)
         </p>
 
         {appliedCoupon ? (
@@ -226,7 +226,7 @@ export default function CheckoutForm({
                   {appliedCoupon.code}
                 </span>
                 <span className="text-text-secondary text-xs ml-2">
-                  — ৳{appliedCoupon.discountAmount} ছাড়
+                  — ৳{appliedCoupon.discountAmount} ডিস্কাউন্ট
                   {appliedCoupon.type === "PERCENTAGE" &&
                     ` (${appliedCoupon.value}%)`}
                 </span>

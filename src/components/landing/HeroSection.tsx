@@ -147,7 +147,7 @@ export default function HeroSection() {
         >
           SPEAK TO WIN:{" "}
           <span className="relative text-accent-gold">
-            LIVE MASTERCLASS
+            LIVE MASTERCLASS and COMMUNITY
           </span>{" "}
           on Communication and Public Speaking
         </motion.h1>
@@ -164,7 +164,7 @@ export default function HeroSection() {
             >
               SPEAK TO WIN:{" "}
               <span className="relative text-accent-gold">
-                LIVE MASTERCLASS
+                LIVE MASTERCLASS and COMMUNITY
               </span>{" "}
               on Communication and Public Speaking
             </motion.h1>

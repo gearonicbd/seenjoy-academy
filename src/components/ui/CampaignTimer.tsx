@@ -1,13 +1,57 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import { Flame, Zap, CalendarClock } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useCampaign } from "@/hooks/useCampaign";
-import { CAMPAIGN_PRICE } from "@/lib/campaign";
+import { CAMPAIGN_PRICE, CAMPAIGN_END } from "@/lib/campaign";
 import { COURSE_INFO } from "@/lib/constants";
 
 const DEADLINE_TEXT = "৩ মে ২০২৬, রাত ১১:৫৯";
 const CAMPAIGN_LABEL = "Early Bird Discount";
+
+function pad(n: number) {
+  return String(n).padStart(2, "0");
+}
+
+type TimeLeft = { d: number; h: number; m: number; s: number };
+
+function useCountdown() {
+  const [timeLeft, setTimeLeft] = useState<TimeLeft | null>(null);
+
+  useEffect(() => {
+    function calc() {
+      const diff = CAMPAIGN_END.getTime() - Date.now();
+      if (diff <= 0) {
+        setTimeLeft({ d: 0, h: 0, m: 0, s: 0 });
+        return;
+      }
+      const totalSecs = Math.floor(diff / 1000);
+      setTimeLeft({
+        d: Math.floor(totalSecs / 86400),
+        h: Math.floor((totalSecs % 86400) / 3600),
+        m: Math.floor((totalSecs % 3600) / 60),
+        s: totalSecs % 60,
+      });
+    }
+    calc();
+    const id = setInterval(calc, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  return timeLeft;
+}
+
+function BannerUnit({ value, label }: { value: string; label: string }) {
+  return (
+    <div className="flex flex-col items-center">
+      <div className="bg-black/30 backdrop-blur-sm rounded-md px-2 py-1 min-w-[36px] text-center">
+        <span className="font-mono font-black text-white text-base leading-none">{value}</span>
+      </div>
+      <span className="text-violet-200 text-[9px] leading-none mt-0.5 uppercase tracking-wide">{label}</span>
+    </div>
+  );
+}
 
 interface Props {
   variant: "banner" | "hero" | "cta" | "floating" | "checkout";
@@ -16,6 +60,7 @@ interface Props {
 
 export default function CampaignTimer({ variant, className }: Props) {
   const { isActive, mounted } = useCampaign();
+  const timeLeft = useCountdown();
 
   if (mounted && !isActive) return null;
 
@@ -59,12 +104,22 @@ export default function CampaignTimer({ variant, className }: Props) {
             </div>
           </div>
 
-          {/* Row 2: Deadline */}
-          <div className="flex items-center gap-1.5">
-            <CalendarClock className="w-4 h-4 text-violet-200 shrink-0" />
-            <span className="text-violet-100 text-sm font-bold whitespace-nowrap">
-              অফার শেষ: {DEADLINE_TEXT}
+          {/* Row 2: Countdown blocks with labels */}
+          <div className="flex items-end gap-1.5">
+            <span className="text-violet-200 text-xs font-medium whitespace-nowrap self-center mb-4">
+              শেষ হচ্ছে:
             </span>
+            {timeLeft && timeLeft.d > 0 && (
+              <>
+                <BannerUnit value={String(timeLeft.d)} label="দিন" />
+                <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
+              </>
+            )}
+            <BannerUnit value={timeLeft ? pad(timeLeft.h) : "--"} label="ঘণ্টা" />
+            <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
+            <BannerUnit value={timeLeft ? pad(timeLeft.m) : "--"} label="মিনিট" />
+            <span className="text-violet-300 font-black text-base self-center mb-4">:</span>
+            <BannerUnit value={timeLeft ? pad(timeLeft.s) : "--"} label="সেকেন্ড" />
           </div>
         </div>
       </div>
@@ -81,6 +136,11 @@ export default function CampaignTimer({ variant, className }: Props) {
         <span className="text-text-secondary text-[9px] leading-none mt-0.5">
           শেষ: {DEADLINE_TEXT}
         </span>
+        {timeLeft && (
+          <span className="font-mono text-[9px] font-black text-violet-300 leading-none mt-0.5 tracking-widest">
+            {pad(timeLeft.h)}:{pad(timeLeft.m)}:{pad(timeLeft.s)}
+          </span>
+        )}
       </div>
     );
   }
@@ -130,16 +190,33 @@ export default function CampaignTimer({ variant, className }: Props) {
           </div>
 
           {/* Deadline */}
-          <div className="flex items-center justify-center gap-2 bg-violet-900/30 border border-violet-500/30 rounded-xl px-4 py-3">
-            <CalendarClock className="w-4 h-4 text-violet-400 shrink-0" />
-            <div className="flex flex-col">
-              <span className="text-violet-300 text-xs font-bold uppercase tracking-wider">
-                অফার শেষ হবে
-              </span>
-              <span className="text-white font-bold text-sm">
-                {DEADLINE_TEXT}
-              </span>
+          <div className="flex flex-col items-center gap-2 bg-violet-900/30 border border-violet-500/30 rounded-xl px-4 py-3">
+            <div className="flex items-center gap-2">
+              <CalendarClock className="w-4 h-4 text-violet-400 shrink-0" />
+              <div className="flex flex-col">
+                <span className="text-violet-300 text-xs font-bold uppercase tracking-wider">
+                  অফার শেষ হবে
+                </span>
+                <span className="text-white font-bold text-sm">
+                  {DEADLINE_TEXT}
+                </span>
+              </div>
             </div>
+            {timeLeft && (
+              <div className="flex items-center gap-1.5">
+                {[{ label: "ঘণ্টা", val: pad(timeLeft.h) }, { label: "মিনিট", val: pad(timeLeft.m) }, { label: "সেকেন্ড", val: pad(timeLeft.s) }].map(({ label, val }, i) => (
+                  <div key={i} className="flex items-center gap-1.5">
+                    {i > 0 && <span className="text-violet-400 font-black text-lg leading-none">:</span>}
+                    <div className="flex flex-col items-center bg-violet-950/60 border border-violet-500/30 rounded-lg px-3 py-1.5 min-w-[48px]">
+                      <span className="font-mono font-black text-white text-xl leading-none tracking-widest">
+                        {val}
+                      </span>
+                      <span className="text-violet-400 text-[9px] mt-0.5 tracking-wide">{label}</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -178,6 +255,23 @@ export default function CampaignTimer({ variant, className }: Props) {
           </div>
           <span className="text-violet-200 font-bold text-sm">{DEADLINE_TEXT}</span>
         </div>
+
+        {/* Countdown row */}
+        {timeLeft && (
+          <div className="flex items-center justify-center gap-1.5 px-3 pb-3">
+            {[{ label: "ঘণ্টা", val: pad(timeLeft.h) }, { label: "মিনিট", val: pad(timeLeft.m) }, { label: "সেকেন্ড", val: pad(timeLeft.s) }].map(({ label, val }, i) => (
+              <div key={i} className="flex items-center gap-1.5">
+                {i > 0 && <span className="text-violet-400 font-black text-base leading-none">:</span>}
+                <div className="flex flex-col items-center bg-violet-950/60 border border-violet-500/30 rounded-lg px-2.5 py-1 min-w-[42px]">
+                  <span className="font-mono font-black text-white text-base leading-none tracking-widest">
+                    {val}
+                  </span>
+                  <span className="text-violet-400 text-[8px] mt-0.5 tracking-wide">{label}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   }

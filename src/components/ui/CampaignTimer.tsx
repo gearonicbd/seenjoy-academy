@@ -28,8 +28,8 @@ function useCountdown() {
       }
       const totalSecs = Math.floor(diff / 1000);
       setTimeLeft({
-        d: Math.floor(totalSecs / 86400),
-        h: Math.floor((totalSecs % 86400) / 3600),
+        d: 0,
+        h: Math.floor(totalSecs / 3600),
         m: Math.floor((totalSecs % 3600) / 60),
         s: totalSecs % 60,
       });

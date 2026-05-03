@@ -15,7 +15,7 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
   const discountFromOriginal = COURSE_INFO.originalPrice - basePrice;
   const couponDiscount = appliedCoupon?.discountAmount ?? 0;
   const finalPrice = basePrice - couponDiscount;
-  const discountLabel = "Discount";
+  const discountLabel = "Live Discount";
 
   return (
     <Card glass className="sticky top-8">

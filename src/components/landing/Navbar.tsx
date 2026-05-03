@@ -36,29 +36,11 @@ export default function Navbar() {
           }}
         />
         <div className="relative flex items-center justify-center gap-3 px-4 py-2.5">
-          {/* Live dot */}
-          <span className="relative flex h-2.5 w-2.5 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-violet-300 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-white" />
-          </span>
 
-          <p className="text-white text-xl font-black tracking-wide whitespace-nowrap">
-            ক্লাস শুরু হচ্ছে&nbsp;<span className="text-violet-200 underline underline-offset-2 decoration-dotted">৮ই মে</span>
+          <p className="text-white text-xl font-black tracking-wide whitespace-nowrap flex flex-col items-center leading-tight">
+            <span>Registration Closes Soon</span>
+            <span className="text-violet-200 text-base font-semibold">Class Starts on 8th May</span>
           </p>
-
-          <span className="text-violet-400/60 font-thin hidden sm:inline">|</span>
-
-          <p className="text-violet-100 text-sm font-semibold hidden sm:block">
-            সীমিত আসন — আজই নিশ্চিত করুন!
-          </p>
-
-          {/* Arrow CTA pill */}
-          <Link
-            href="/checkout"
-            className="ml-1 hidden sm:flex items-center gap-1 bg-white/15 hover:bg-white/25 transition-colors border border-white/20 text-white text-xs font-bold px-3 py-1 rounded-full shrink-0"
-          >
-            এখনই ভর্তি হোন →
-          </Link>
         </div>
       </div>
 

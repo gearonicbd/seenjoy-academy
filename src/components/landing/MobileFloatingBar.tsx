@@ -6,8 +6,6 @@ import { useCampaign } from "@/hooks/useCampaign";
 
 export default function MobileFloatingBar() {
   const { price } = useCampaign();
-  const discountLabel = "Discount";
-
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-bg-secondary/95 backdrop-blur-md border-t border-border-default safe-area-inset-bottom">
       <div className="flex items-center justify-between gap-3 px-4 py-3">
@@ -17,9 +15,6 @@ export default function MobileFloatingBar() {
           </span>
           <span className="text-white font-bold text-2xl leading-none mt-0.5">
             ৳{price}
-          </span>
-          <span className="text-accent-gold text-[10px] font-medium leading-none mt-0.5">
-            {discountLabel}
           </span>
         </div>
 

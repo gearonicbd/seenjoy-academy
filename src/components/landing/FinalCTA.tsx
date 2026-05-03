@@ -8,8 +8,6 @@ import { SECTIONS, COURSE_INFO } from "@/lib/constants";
 export default function FinalCTA() {
   const price = COURSE_INFO.price;
   const discountPct = Math.round(((COURSE_INFO.originalPrice - price) / COURSE_INFO.originalPrice) * 100);
-  const discountLabel = "Discount";
-
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
       {/* Gradient background */}
@@ -55,7 +53,6 @@ export default function FinalCTA() {
           <div className="text-6xl font-bold text-white">
             ৳{price}
           </div>
-          <p className="text-text-primary/70 text-sm">{discountLabel}</p>
         </motion.div>
 
         <motion.div

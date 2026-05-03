@@ -136,7 +136,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-8">
+      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-12">
         {/* Mobile-only heading — renders above the image */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}

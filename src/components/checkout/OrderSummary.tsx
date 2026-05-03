@@ -3,9 +3,7 @@
 import Image from "next/image";
 import { Calendar, Clock, Globe, User } from "lucide-react";
 import Card from "@/components/ui/Card";
-import CampaignTimer from "@/components/ui/CampaignTimer";
 import { COURSE_INFO } from "@/lib/constants";
-import { useCampaign } from "@/hooks/useCampaign";
 import type { AppliedCoupon } from "@/types";
 
 interface OrderSummaryProps {
@@ -13,11 +11,11 @@ interface OrderSummaryProps {
 }
 
 export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
-  const { price: basePrice, isActive } = useCampaign();
+  const basePrice = COURSE_INFO.price;
   const discountFromOriginal = COURSE_INFO.originalPrice - basePrice;
   const couponDiscount = appliedCoupon?.discountAmount ?? 0;
   const finalPrice = basePrice - couponDiscount;
-  const discountLabel = "Early Bird Discount";
+  const discountLabel = "Discount";
 
   return (
     <Card glass className="sticky top-8">
@@ -55,9 +53,6 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
           <span>{COURSE_INFO.platform} — লাইভ অনলাইন</span>
         </div>
       </div>
-
-      {/* Campaign timer */}
-      <CampaignTimer variant="checkout" className="mb-4" />
 
       <div className="border-t border-border-default pt-4 mb-4 space-y-2">
         <div className="flex justify-between items-center text-sm text-text-secondary">

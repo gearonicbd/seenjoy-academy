@@ -7,7 +7,6 @@ import { Calendar, Clock, Globe, Timer, Mic2, Play, X } from "lucide-react";
 
 import Button from "@/components/ui/Button";
 import Badge from "@/components/ui/Badge";
-import CampaignTimer from "@/components/ui/CampaignTimer";
 import { COURSE_INFO, HERO, MENTOR_INFO } from "@/lib/constants";
 
 const YOUTUBE_ID = "mHi0dcXjSHY";
@@ -137,7 +136,7 @@ export default function HeroSection() {
         }}
       />
 
-      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-14 md:py-20">
+      <div className="relative w-full max-w-6xl mx-auto px-4 md:px-6 py-8">
         {/* Mobile-only heading — renders above the image */}
         <motion.h1
           initial={{ opacity: 0, y: 25 }}
@@ -218,16 +217,6 @@ export default function HeroSection() {
               >
                 {COURSE_INFO.durationPerClass} / ক্লাস
               </Badge>
-            </motion.div>
-
-            {/* Campaign countdown timer above JOIN NOW */}
-            <motion.div
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.45 }}
-              className="mb-4 flex justify-center"
-            >
-              <CampaignTimer variant="hero" className="w-full sm:w-auto" />
             </motion.div>
 
             {/* CTAs */}

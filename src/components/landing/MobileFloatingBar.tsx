@@ -5,8 +5,8 @@ import { COURSE_INFO } from "@/lib/constants";
 import { useCampaign } from "@/hooks/useCampaign";
 
 export default function MobileFloatingBar() {
-  const { price, isActive } = useCampaign();
-  const discountLabel = "Early Bird";
+  const { price } = useCampaign();
+  const discountLabel = "Discount";
 
   return (
     <div className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-bg-secondary/95 backdrop-blur-md border-t border-border-default safe-area-inset-bottom">
@@ -19,7 +19,7 @@ export default function MobileFloatingBar() {
             ৳{price}
           </span>
           <span className="text-accent-gold text-[10px] font-medium leading-none mt-0.5">
-            {discountLabel} Discount
+            {discountLabel}
           </span>
         </div>
 

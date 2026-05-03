@@ -3,14 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion";
 import Button from "@/components/ui/Button";
-import CampaignTimer from "@/components/ui/CampaignTimer";
 import { SECTIONS, COURSE_INFO } from "@/lib/constants";
-import { useCampaign } from "@/hooks/useCampaign";
 
 export default function FinalCTA() {
-  const { price, isActive } = useCampaign();
+  const price = COURSE_INFO.price;
   const discountPct = Math.round(((COURSE_INFO.originalPrice - price) / COURSE_INFO.originalPrice) * 100);
-  const discountLabel = "Early Bird Discount";
+  const discountLabel = "Discount";
 
   return (
     <section className="py-16 md:py-24 relative overflow-hidden">
@@ -58,17 +56,6 @@ export default function FinalCTA() {
             ৳{price}
           </div>
           <p className="text-text-primary/70 text-sm">{discountLabel}</p>
-        </motion.div>
-
-        {/* Campaign countdown timer */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.25 }}
-          className="flex justify-center mb-6"
-        >
-          <CampaignTimer variant="cta" />
         </motion.div>
 
         <motion.div

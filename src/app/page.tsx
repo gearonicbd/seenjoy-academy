@@ -7,6 +7,9 @@ import FAQSection from "@/components/landing/FAQSection";
 import FinalCTA from "@/components/landing/FinalCTA";
 import Footer from "@/components/landing/Footer";
 import MobileFloatingBar from "@/components/landing/MobileFloatingBar";
+
+export const dynamic = "force-static";
+
 export default function HomePage() {
   return (
     <>

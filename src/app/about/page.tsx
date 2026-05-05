@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, Globe, Mail, MapPin, Users, Camera } from "lucide-react";
+
+export const dynamic = "force-static";
 
 const sections = [
   {
@@ -40,7 +41,7 @@ export default function AboutPage() {
       <nav className="border-b border-border-default bg-bg-secondary/50">
         <div className="max-w-4xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image
+            <img
               src="/assets/main-logo.png"
               alt="Seenjoy Academy"
               width={140}

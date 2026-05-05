@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { Calendar, Clock, Globe, User } from "lucide-react";
 import Card from "@/components/ui/Card";
 import { COURSE_INFO } from "@/lib/constants";
@@ -21,7 +20,7 @@ export default function OrderSummary({ appliedCoupon }: OrderSummaryProps) {
     <Card glass className="sticky top-8">
       {/* Course logo */}
       <div className="aspect-video rounded-xl bg-bg-tertiary border border-border-default flex items-center justify-center mb-5 overflow-hidden">
-        <Image
+        <img
           src="/assets/speak-to-win-logo.png"
           alt="Speak To Win"
           width={320}

@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
+
+export const dynamic = "force-static";
 
 export default function TermsAndConditionsPage() {
   return (
@@ -8,7 +9,7 @@ export default function TermsAndConditionsPage() {
       <nav className="border-b border-border-default bg-bg-secondary/50">
         <div className="max-w-4xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image src="/assets/main-logo.png" alt="Seenjoy Academy" width={140} height={40} className="h-10 w-auto object-contain" />
+            <img src="/assets/main-logo.png" alt="Seenjoy Academy" width={140} height={40} className="h-10 w-auto object-contain" />
           </Link>
           <Link href="/" className="flex items-center gap-1.5 text-text-secondary hover:text-text-primary transition-colors text-sm">
             <ArrowLeft className="w-4 h-4" />

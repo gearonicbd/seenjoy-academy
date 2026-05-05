@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
-import Image from "next/image";
 import { cn } from "@/lib/utils";
 import Button from "@/components/ui/Button";
 import { NAV } from "@/lib/constants";
@@ -55,13 +54,12 @@ export default function Navbar() {
       >
         <div className="max-w-6xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image
+            <img
               src="/assets/main-logo.png"
               alt={NAV.logo}
               width={180}
               height={52}
               className="h-13 w-auto object-contain"
-              priority
             />
           </Link>
           <Link href="/checkout">

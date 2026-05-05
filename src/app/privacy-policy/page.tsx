@@ -1,6 +1,7 @@
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
+
+export const dynamic = "force-static";
 
 export default function PrivacyPolicyPage() {
   return (
@@ -8,7 +9,7 @@ export default function PrivacyPolicyPage() {
       <nav className="border-b border-border-default bg-bg-secondary/50">
         <div className="max-w-4xl mx-auto px-4 md:px-6 h-16 flex items-center justify-between">
           <Link href="/" className="hover:opacity-80 transition-opacity">
-            <Image src="/assets/main-logo.png" alt="Seenjoy Academy" width={140} height={40} className="h-10 w-auto object-contain" />
+            <img src="/assets/main-logo.png" alt="Seenjoy Academy" width={140} height={40} className="h-10 w-auto object-contain" />
           </Link>
           <Link href="/" className="flex items-center gap-1.5 text-text-secondary hover:text-text-primary transition-colors text-sm">
             <ArrowLeft className="w-4 h-4" />
@@ -27,7 +28,7 @@ export default function PrivacyPolicyPage() {
 
           <section>
             <h2 className="text-text-primary font-semibold text-base mb-3 border-l-2 border-accent-gold pl-3">1. Introduction &amp; Binding Agreement</h2>
-            <p className="mb-3">This Privacy Policy constitutes a legally binding agreement between the user ("you") and Seenjoy Academy ("we", "our", "us"). By accessing, registering, purchasing, visiting or using our website, platforms, services and by interacting with us you:</p>
+            <p className="mb-3">This Privacy Policy constitutes a legally binding agreement between the user (&quot;you&quot;) and Seenjoy Academy (&quot;we&quot;, &quot;our&quot;, &quot;us&quot;). By accessing, registering, purchasing, visiting or using our website, platforms, services and by interacting with us you:</p>
             <ul className="list-disc list-inside space-y-1 mb-3 pl-2">
               <li>Provide informed and explicit consent to data collection and processing</li>
               <li>Enter into a binding agreement under the Contract Act, 1872</li>
@@ -35,7 +36,7 @@ export default function PrivacyPolicyPage() {
             </ul>
             <p className="mb-2">If you do not agree, you must immediately discontinue use.</p>
             <ul className="list-disc list-inside space-y-1 pl-2">
-              <li>Use by a minor = guardian's consent</li>
+              <li>Use by a minor = guardian&apos;s consent</li>
               <li>In this case guardian is liable and legally bound</li>
             </ul>
           </section>
@@ -96,7 +97,7 @@ export default function PrivacyPolicyPage() {
             <ul className="list-disc list-inside space-y-1 mb-3 pl-2">
               <li>No system is completely secure</li>
               <li>Users acknowledge inherent cyber risks</li>
-              <li>Data transmission occurs at user's own risk</li>
+              <li>Data transmission occurs at user&apos;s own risk</li>
             </ul>
             <p className="mb-3">Seenjoy Academy shall not be liable for unauthorized access beyond reasonable control, including:</p>
             <ul className="list-disc list-inside space-y-1 pl-2">

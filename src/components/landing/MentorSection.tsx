@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "framer-motion";
 import { CheckCircle } from "lucide-react";
 import SectionHeading from "@/components/ui/SectionHeading";

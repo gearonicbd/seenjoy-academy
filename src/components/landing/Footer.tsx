@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { ExternalLink } from "lucide-react";
 
@@ -8,7 +7,7 @@ export default function Footer() {
       <div className="max-w-6xl mx-auto px-4 md:px-6">
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex flex-col items-center md:items-start text-center md:text-left">
-            <Image
+            <img
               src="/assets/main-logo.png"
               alt="Seenjoy Academy"
               width={180}

@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
-import Image from "next/image";
 import { Lock, Tag, CheckCircle, X } from "lucide-react";
 import Input from "@/components/ui/Input";
 import Button from "@/components/ui/Button";
@@ -362,14 +361,14 @@ export default function CheckoutForm({
       </div>
 
       <div className="flex justify-center pt-2">
-        <Image
+        <img
           src="/payment/payment-banner-desktop.png"
           alt="SSLCommerz Payment Methods"
           width={420}
           height={60}
           className="hidden md:block mx-auto"
         />
-        <Image
+        <img
           src="/payment/payment-banner_mobile.png"
           alt="SSLCommerz Payment Methods"
           width={400}
